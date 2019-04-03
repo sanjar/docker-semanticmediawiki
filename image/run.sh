@@ -10,6 +10,6 @@
 # exec httpd -D FOREGROUND 
 # ubuntu is different
 # http://koansys.com/news/run-apache-in-the-forground-on-ubuntu
-service mysql start
+sudo service mysql start
 . /etc/apache2/envvars;
 apache2 -X

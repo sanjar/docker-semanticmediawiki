@@ -104,7 +104,7 @@ dosql() {
 # prepare mysql
 #
 prepare_mysql() {
-  service mysql start
+  sudo service mysql start
   MYSQL_PASSWD=`random_password`
 	color_msg $blue "setting MySQL password to random password $MYSQL_PASSWD"
   mysqladmin -u root password $MYSQL_PASSWD
@@ -342,7 +342,7 @@ mediawiki_install() {
 	prepare_mysql
  
 	# start the services
-	service apache2 start
+	sudo service apache2 start
 	
 	# use the one created by this script instead
 	if [ "$l_option" == "-nols" ]
