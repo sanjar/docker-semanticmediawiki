@@ -65,6 +65,7 @@ RUN \
 	php7.0-mysql
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+USER docker
 	
 # see https://www.mediawiki.org/wiki/Manual:Installing_MediaWiki
 RUN cd /var/www/html/ && \
