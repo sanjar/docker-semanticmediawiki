@@ -65,7 +65,7 @@ RUN \
 	php7.0-mysql
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-USER docker
+
 	
 # see https://www.mediawiki.org/wiki/Manual:Installing_MediaWiki
 RUN cd /var/www/html/ && \
@@ -85,6 +85,7 @@ RUN /bin/bash /docker-entrypoint.sh -smw
 # COPY run script to be used as an entrypoint after installation
 COPY ./image/run.sh /
 
+USER docker
 # Use it as an entry point
 ENTRYPOINT ["/bin/bash","/run.sh"]
 		
