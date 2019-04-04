@@ -47,7 +47,7 @@ ENV SMW_VERSION 2.5.8
 # see https://www.mediawiki.org/wiki/Manual:Running_MediaWiki_on_Ubuntu 
 RUN \
   apt-get update && \
-  apt-get install -y \
+  apt-get install -y sudo \
 	apache2 \
 	apt-utils \
 	curl \
@@ -63,7 +63,9 @@ RUN \
 	php7.0-mbstring \
 	php7.0-xml \
 	php7.0-mysql
-		
+
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+	
 # see https://www.mediawiki.org/wiki/Manual:Installing_MediaWiki
 RUN cd /var/www/html/ && \
   curl -O https://releases.wikimedia.org/mediawiki/$MEDIAWIKI_VERSION/$MEDIAWIKI.tar.gz && \
